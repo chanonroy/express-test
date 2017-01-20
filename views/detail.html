@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %} Detail {% endblock %}
+{% block title %} Teams {% endblock %}
 
 {% block content %}
 
-<h1> This is detail content </h1>
+<h1> Here is a list of team </h1>
+
+<ul>
+  {% for team in teams %}
+  <li> {{ team.name }} </li>
+  {% endfor %}
+</ul>
+
+{% verbatim %}
+<p> {{ this will have curly braces }} </p>
+{% endverbatim %}
 
 {% endblock %}
