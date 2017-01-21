@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-// index
+var teamsData = require('../models/teams.js');
+
 router.get('/', function(req, res){
-  res.render('home.html');
+  res.render('detail.html', {
+    teams: teamsData
+  });
 });
 
 module.exports = router;

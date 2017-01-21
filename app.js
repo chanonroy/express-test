@@ -3,7 +3,9 @@ var port = process.env.PORT || 3000;
 var express = require('express');
 var bodyParser = require('body-parser');
 var nunjucks = require('nunjucks');
-var routes = require('./routes/index');
+
+var indexURL = require('./routes/index');
+var teamURL = require('./routes/teams');
 
 var app = express();
 
@@ -19,7 +21,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./middlewares/logging'));
 
 // ROUTES
-app.use('/', routes);
+app.use('/', indexURL);
+app.use('/teams', teamURL);
+app.get('*', function(req, res) {
+  res.status(404).render('404.html');
+});
 
 // PORT LISTEN
 app.listen(port, function(){
