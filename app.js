@@ -15,7 +15,7 @@ app.set('view engine', 'nunjucks');
 app.set('views', path.join(__dirname, '/views'));
 
 // STATIC FILES
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/dist')));
 
 // MIDDLEWARE
 app.use(require('./middlewares/logging'));
