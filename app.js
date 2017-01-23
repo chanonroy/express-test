@@ -3,6 +3,7 @@ var port = process.env.PORT || 3000;
 var express = require('express');
 var bodyParser = require('body-parser');
 var nunjucks = require('nunjucks');
+var favicon = require('serve-favicon');
 
 var indexURL = require('./routes/index');
 var teamURL = require('./routes/teams');
@@ -15,7 +16,8 @@ app.set('view engine', 'nunjucks');
 app.set('views', path.join(__dirname, '/views'));
 
 // STATIC FILES
-app.use(express.static(path.join(__dirname, 'public/dist')));
+app.use(express.static(path.join(__dirname, 'public', 'dist')));
+app.use(favicon(path.join(__dirname, 'public', 'dist', 'favicon.ico')));
 
 // MIDDLEWARE
 app.use(require('./middlewares/logging'));
