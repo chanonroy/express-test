@@ -1,15 +1,22 @@
 <template>
 
-  <div>
-    <h1> Jumbotron Component </h1>
+  <div class="l-jumbo">
+    <h1> Jumbotron </h1>
   </div>
-  
+
 </template>
 
 <script>
+
 export default {
 }
+
 </script>
 
-<style lang="css">
+<style lang="scss">
+
+.l-jumbo {
+  color: orange;
+}
+
 </style>

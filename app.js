@@ -2,18 +2,9 @@ var path = require('path');
 var port = process.env.PORT || 3000;
 var express = require('express');
 var bodyParser = require('body-parser');
-var nunjucks = require('nunjucks');
 var favicon = require('serve-favicon');
 
-var indexURL = require('./routes/index');
-var teamURL = require('./routes/teams');
-
 var app = express();
-
-// VIEW ENGINE (nunjucks - jinja2)
-nunjucks.configure('views', { autoescape: true, express: app });
-app.set('view engine', 'nunjucks');
-app.set('views', path.join(__dirname, '/views'));
 
 // STATIC FILES
 app.use(express.static(path.join(__dirname, 'public', 'dist')));
@@ -23,10 +14,8 @@ app.use(favicon(path.join(__dirname, 'public', 'dist', 'favicon.ico')));
 app.use(require('./middlewares/logging'));
 
 // ROUTES
-app.use('/', indexURL);
-app.use('/teams', teamURL);
-app.get('*', function(req, res) {
-  res.status(404).render('404.html');
+app.get('/', function(req, res){
+  res.render('index.html');
 });
 
 // PORT LISTEN

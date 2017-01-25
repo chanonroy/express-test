@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div id="app">
 
-    <h1 class="title"> {{ message }} </h1>
+    <navbar></navbar>
+    <router-view></router-view>
 
   </div>
 </template>
@@ -10,17 +11,15 @@
 export default {
   name: 'app',
   data () {
-    return {
-      message: 'Welcome to Vue'
-    }
+    return {}
   }
 }
 </script>
 
 <style>
 
-.title {
-  color: blue;
+body {
+  margin: 0;
 }
 
 </style>

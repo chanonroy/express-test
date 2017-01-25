@@ -15,7 +15,9 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          // vue-loader options go here
+          loaders: {
+            'scss': 'vue-style-loader!css-loader!postcss-loader!sass-loader',
+          }
         }
       },
       {
@@ -31,5 +33,15 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
+  },
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true
+  },
+  devtool: '#eval-source-map'
 };
